@@ -1,26 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Todo - List</h1>
+  <input type="text" v-model="currentInput" />
+  <button @click="addTodo">Add</button>
+  <ul>
+    <todo-item v-for="todo in todos" v-bind:key="todo" :todo-text="todo"></todo-item>
+  </ul>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      currentInput: '',
+      todos: [],
+    };
+  },
+  methods: {
+    addTodo() {
+      this.todos.push(this.currentInput);
+      this.currentInput = '';
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

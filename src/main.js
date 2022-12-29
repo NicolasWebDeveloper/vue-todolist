@@ -1,4 +1,10 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-createApp(App).mount('#app')
+import TodoItem from './components/TodoItem.vue';
+
+const app = createApp(App);
+
+app.component('todo-item', TodoItem);
+
+app.mount('#app');
